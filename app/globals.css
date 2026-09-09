@@ -50,13 +50,6 @@ main {
   letter-spacing: -0.01em;
 }
 
-.pronunciation {
-  margin: 0.35rem 0 0;
-  font-size: 1.05rem;
-  color: var(--muted);
-  font-style: normal;
-}
-
 .pos {
   margin: 0.15rem 0 0;
   font-style: italic;
@@ -72,17 +65,8 @@ main {
 
 .footer {
   margin: 0;
-  max-width: 600px;
-  text-align: center;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
   font-variant-caps: all-small-caps;
-  color: var(--muted);
-  line-height: 1.8;
-}
-
-.footer code {
-  font-family: inherit;
-  font-variant-caps: normal;
-  letter-spacing: 0.02em;
+  color: rgba(23, 20, 15, 0.32);
 }

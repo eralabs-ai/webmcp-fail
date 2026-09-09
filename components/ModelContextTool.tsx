@@ -57,11 +57,8 @@ export function ModelContextTool() {
   }, []);
 
   return (
-    <p className="footer">
-      {entry.footnote}
-      <br />
-      <code>{path || "modelContext"}</code>:{" "}
-      {path === null ? "…" : path ? "detected" : "not present in this browser"}
+    <p className="footer" aria-live="polite">
+      {path === null ? "\u00a0" : path ? `${path} · detected` : "modelContext · not present"}
     </p>
   );
 }

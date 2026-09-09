@@ -1,6 +1,5 @@
 export const entry = {
   headword: "WebMCP",
-  pronunciation: "/ˈwɛb ɛm siː ˈpiː/",
   partOfSpeech: "noun",
   definition:
     "A way for a human website to expose specific tools so that an agent won't actually have to use the human website.",

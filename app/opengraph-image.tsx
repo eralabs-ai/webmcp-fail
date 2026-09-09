@@ -59,10 +59,7 @@ export default async function Image() {
           <div style={{ display: "flex", fontSize: 72, fontWeight: 700, lineHeight: 1.05 }}>
             {entry.headword}
           </div>
-          <div style={{ display: "flex", fontSize: 28, color: "rgba(23,20,15,0.55)", marginTop: 10 }}>
-            {entry.pronunciation}
-          </div>
-          <div style={{ display: "flex", fontSize: 28, fontStyle: "italic", marginTop: 4 }}>
+          <div style={{ display: "flex", fontSize: 28, fontStyle: "italic", marginTop: 12 }}>
             {entry.partOfSpeech}
           </div>
           <div style={{ display: "flex", fontSize: 32, lineHeight: 1.45, marginTop: 40 }}>
