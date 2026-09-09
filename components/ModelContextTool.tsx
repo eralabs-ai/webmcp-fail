@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect } from "react";
 import { entry } from "@/content/entry";
 
 type ModelContextLike = {
@@ -15,33 +15,22 @@ type ModelContextLike = {
   ) => Promise<void> | void;
 };
 
-function findModelContext(): { path: string; ctx: ModelContextLike } | null {
-  if (typeof window === "undefined") return null;
+function findModelContext(): ModelContextLike | null {
   const doc = (document as unknown as { modelContext?: ModelContextLike }).modelContext;
-  if (doc && typeof doc.registerTool === "function") {
-    return { path: "document.modelContext", ctx: doc };
-  }
+  if (doc && typeof doc.registerTool === "function") return doc;
   const nav = (navigator as unknown as { modelContext?: ModelContextLike }).modelContext;
-  if (nav && typeof nav.registerTool === "function") {
-    return { path: "navigator.modelContext", ctx: nav };
-  }
+  if (nav && typeof nav.registerTool === "function") return nav;
   return null;
 }
 
-const subscribe = () => () => {};
-const getSnapshot = () => findModelContext()?.path ?? "";
-const getServerSnapshot = () => null;
-
+/** Registers the WebMCP tool where the API exists; renders nothing. */
 export function ModelContextTool() {
-  // null = server/hydrating, "" = not present, otherwise the path where it lives
-  const path = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
   useEffect(() => {
-    const found = findModelContext();
-    if (!found) return;
+    const ctx = findModelContext();
+    if (!ctx) return;
     const controller = new AbortController();
     Promise.resolve(
-      found.ctx.registerTool(
+      ctx.registerTool(
         {
           name: "get_definition",
           description: `Returns the dictionary definition of ${entry.headword}.`,
@@ -56,9 +45,5 @@ export function ModelContextTool() {
     return () => controller.abort();
   }, []);
 
-  return (
-    <p className="footer" aria-live="polite">
-      {path === null ? "\u00a0" : path ? `${path} · detected` : "modelContext · not present"}
-    </p>
-  );
+  return null;
 }

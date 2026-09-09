@@ -65,8 +65,8 @@ main {
 
 .footer {
   margin: 0;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
   font-variant-caps: all-small-caps;
-  color: rgba(23, 20, 15, 0.32);
+  color: rgba(23, 20, 15, 0.4);
 }

@@ -10,6 +10,7 @@ export default function Page() {
         <p className="definition">          {entry.definition}
         </p>
       </article>
+      <p className="footer">{entry.footnote}</p>
       <ModelContextTool />
     </main>
   );
