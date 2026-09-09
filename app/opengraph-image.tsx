@@ -24,6 +24,8 @@ export default async function Image() {
     loadFont(400, true),
   ]);
 
+  const ink = "#17140f";
+
   return new ImageResponse(
     (
       <div
@@ -31,41 +33,54 @@ export default async function Image() {
           width: "100%",
           height: "100%",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           background: "#f4efe4",
-          color: "#17140f",
+          color: ink,
           fontFamily: "Libre Baskerville",
-          padding: 72,
+          padding: "56px 80px 44px",
         }}
       >
         <div
           style={{
             display: "flex",
-            width: 1056,
-            border: "2px solid #17140f",
-            padding: 3,
+            width: "100%",
+            border: `2px solid ${ink}`,
+            padding: 4,
           }}
         >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+              border: `2px solid ${ink}`,
+              padding: "56px 72px 60px",
+            }}
+          >
+            <div style={{ display: "flex", fontSize: 88, fontWeight: 700, lineHeight: 1 }}>
+              {entry.headword}
+            </div>
+            <div style={{ display: "flex", fontSize: 32, fontStyle: "italic", marginTop: 16 }}>
+              {entry.partOfSpeech}
+            </div>
+            <div style={{ display: "flex", fontSize: 38, lineHeight: 1.4, marginTop: 40 }}>
+              {entry.definition}
+            </div>
+          </div>
+        </div>
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            width: "100%",
-            border: "2px solid #17140f",
-            padding: "60px 70px",
+            marginTop: 22,
+            fontSize: 22,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            color: "rgba(23,20,15,0.45)",
           }}
         >
-          <div style={{ display: "flex", fontSize: 72, fontWeight: 700, lineHeight: 1.05 }}>
-            {entry.headword}
-          </div>
-          <div style={{ display: "flex", fontSize: 28, fontStyle: "italic", marginTop: 12 }}>
-            {entry.partOfSpeech}
-          </div>
-          <div style={{ display: "flex", fontSize: 32, lineHeight: 1.45, marginTop: 40 }}>
-            {entry.definition}
-          </div>
-        </div>
+          webmcp.fail
         </div>
       </div>
     ),
